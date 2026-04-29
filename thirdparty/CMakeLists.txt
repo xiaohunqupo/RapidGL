@@ -19,8 +19,20 @@ add_library(stb_image STATIC ${STB_IMAGE_DIR}/stb_image.cpp
 target_include_directories(stb_image PRIVATE ${STB_IMAGE_DIR})
 
 # other
+CPMAddPackage(
+    NAME glfw
+    GITHUB_REPOSITORY glfw/glfw
+    GIT_TAG 3.3.10
+    GIT_SHALLOW TRUE
+    OPTIONS
+        "GLFW_BUILD_EXAMPLES OFF"
+        "GLFW_BUILD_TESTS OFF"
+        "GLFW_BUILD_DOCS OFF"
+        "GLFW_INSTALL OFF"
+		"GLFW_BUILD_WAYLAND OFF"
+)
+
 CPMAddPackage("gh:assimp/assimp@6.0.2")
-CPMAddPackage("gh:glfw/glfw#3.4")
 CPMAddPackage("gh:g-truc/glm#1.0.2")
 CPMAddPackage("gh:ocornut/imgui@1.88")
 CPMAddPackage("gh:gabime/spdlog@1.16.0")
